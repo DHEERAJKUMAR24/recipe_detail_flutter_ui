@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:recipe_detail_flutter_ui/config/colors.dart';
 import 'package:recipe_detail_flutter_ui/screens/recipe_detail/recipe_detail_screen.dart';
 
 void main() {
+    // Set the global status bar style
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.white, // Set the status bar color to white
+      statusBarIconBrightness: Brightness.dark, // Set icon brightness to dark
+      statusBarBrightness: Brightness.light, // Set brightness for Android devices
+    ),
+  );
+
   runApp(const MyApp());
 }
 
@@ -16,7 +26,7 @@ class MyApp extends StatelessWidget {
       title: 'Recipe Detail',
       debugShowCheckedModeBanner: false,
       theme: kAppThemeData,
-      home: const RecipeDetailScreen(),
+      home: const SafeArea(child: RecipeDetailScreen()),
     );
   }
 }
